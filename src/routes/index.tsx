@@ -46,6 +46,7 @@ function Hero() {
         src={heroImg}
         alt="Matte black exotic supercar under a downtown San Antonio overpass at dusk"
         className="absolute inset-0 h-full w-full object-cover"
+        style={{ filter: "brightness(1.25)" }}
         width={1920}
         height={1080}
         fetchPriority="high"
