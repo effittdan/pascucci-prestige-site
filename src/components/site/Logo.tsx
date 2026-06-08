@@ -5,7 +5,7 @@ export function Logo({ className = "" }: { className?: string }) {
     <img
       src={logoAsset.url}
       alt="Pascucci Prestige — Luxury Auto Concierge"
-      className={`h-12 w-auto md:h-14 ${className}`}
+      className={`h-18 w-auto md:h-21 ${className}`}
     />
   );
 }
