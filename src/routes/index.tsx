@@ -112,26 +112,28 @@ function FeaturedFleet() {
                     className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                   />
                 </div>
-                <div className="pt-5">
-                  <p className="eyebrow">{v.category}</p>
-                  <h3 className="mt-2 font-serif text-2xl lg:text-3xl text-ivory">{v.name}</h3>
-                  <p className="mt-2 spec text-ivory">
-                    {v.rate} <span className="text-titanium">{v.rateUnit}</span>
-                  </p>
-                  <p className="mt-3 spec text-titanium">
-                    {v.passengers} passengers · {v.drive} · Delivery available
-                  </p>
-                  <div className="hairline mt-5" />
-                  <div className="mt-5 flex items-center justify-between">
-                    <span className="spec text-gold inline-flex items-center gap-2">
-                      View Details <ArrowRight size={12} />
-                    </span>
-                    <Link to="/request-reservation" className="spec text-ivory/70 hover:text-ivory">
-                      Ask About Availability
-                    </Link>
-                  </div>
-                </div>
               </Link>
+              <div className="pt-5">
+                <p className="eyebrow">{v.category}</p>
+                <Link to="/fleet" className="block">
+                  <h3 className="mt-2 font-serif text-2xl lg:text-3xl text-ivory">{v.name}</h3>
+                </Link>
+                <p className="mt-2 spec text-ivory">
+                  {v.rate} <span className="text-titanium">{v.rateUnit}</span>
+                </p>
+                <p className="mt-3 spec text-titanium">
+                  {v.passengers} passengers · {v.drive} · Delivery available
+                </p>
+                <div className="hairline mt-5" />
+                <div className="mt-5 flex items-center justify-between">
+                  <Link to="/fleet" className="spec text-gold inline-flex items-center gap-2">
+                    View Details <ArrowRight size={12} />
+                  </Link>
+                  <Link to="/request-reservation" className="spec text-ivory/70 hover:text-ivory">
+                    Ask About Availability
+                  </Link>
+                </div>
+              </div>
             </article>
           ))}
         </div>
