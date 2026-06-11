@@ -1,0 +1,8 @@
+[build]
+  command = "bun run build"
+  # The TanStack Start / Nitro "netlify" preset emits the static client output to
+  # ./dist (see nitro.json -> publicDir) and the SSR handler to
+  # .netlify/functions-internal. The publish directory must therefore point at
+  # "dist", not "dist/client". Pinning it here overrides the stale UI value that
+  # caused the deploy to fail with "deploy directory dist/client has not been found".
+  publish = "dist"
