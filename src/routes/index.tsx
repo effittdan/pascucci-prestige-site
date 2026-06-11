@@ -44,7 +44,7 @@ function Hero() {
     <section className="relative min-h-[100svh] flex items-end overflow-hidden">
       <img
         src={heroImg}
-        alt="Matte black exotic supercar under a downtown San Antonio overpass at dusk"
+        alt="White McLaren GT parked at a luxury hillside villa at dusk overlooking the sea"
         className="absolute inset-0 h-full w-full object-cover"
         style={{ filter: "brightness(1.25)" }}
         width={1920}
