@@ -12,4 +12,8 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Force Nitro on with the Netlify preset so CI deploys emit the SSR handler
+  // Netlify auto-detects. Inside the Lovable sandbox this override is ignored
+  // and the Cloudflare preset is used.
+  nitro: { preset: "netlify" },
 });
