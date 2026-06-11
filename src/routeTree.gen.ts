@@ -13,6 +13,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RequestReservationRouteImport } from './routes/request-reservation'
 import { Route as OccasionsRouteImport } from './routes/occasions'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as HealthRouteImport } from './routes/health'
 import { Route as FleetRouteImport } from './routes/fleet'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -39,6 +40,11 @@ const OccasionsRoute = OccasionsRouteImport.update({
 const HowItWorksRoute = HowItWorksRouteImport.update({
   id: '/how-it-works',
   path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HealthRoute = HealthRouteImport.update({
+  id: '/health',
+  path: '/health',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FleetRoute = FleetRouteImport.update({
@@ -84,6 +90,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/fleet': typeof FleetRoute
+  '/health': typeof HealthRoute
   '/how-it-works': typeof HowItWorksRoute
   '/occasions': typeof OccasionsRoute
   '/request-reservation': typeof RequestReservationRoute
@@ -97,6 +104,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/fleet': typeof FleetRoute
+  '/health': typeof HealthRoute
   '/how-it-works': typeof HowItWorksRoute
   '/occasions': typeof OccasionsRoute
   '/request-reservation': typeof RequestReservationRoute
@@ -111,6 +119,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/fleet': typeof FleetRoute
+  '/health': typeof HealthRoute
   '/how-it-works': typeof HowItWorksRoute
   '/occasions': typeof OccasionsRoute
   '/request-reservation': typeof RequestReservationRoute
@@ -126,6 +135,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/fleet'
+    | '/health'
     | '/how-it-works'
     | '/occasions'
     | '/request-reservation'
@@ -139,6 +149,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/fleet'
+    | '/health'
     | '/how-it-works'
     | '/occasions'
     | '/request-reservation'
@@ -152,6 +163,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/fleet'
+    | '/health'
     | '/how-it-works'
     | '/occasions'
     | '/request-reservation'
@@ -166,6 +178,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   FleetRoute: typeof FleetRoute
+  HealthRoute: typeof HealthRoute
   HowItWorksRoute: typeof HowItWorksRoute
   OccasionsRoute: typeof OccasionsRoute
   RequestReservationRoute: typeof RequestReservationRoute
@@ -201,6 +214,13 @@ declare module '@tanstack/react-router' {
       path: '/how-it-works'
       fullPath: '/how-it-works'
       preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/health': {
+      id: '/health'
+      path: '/health'
+      fullPath: '/health'
+      preLoaderRoute: typeof HealthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/fleet': {
@@ -262,6 +282,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   FleetRoute: FleetRoute,
+  HealthRoute: HealthRoute,
   HowItWorksRoute: HowItWorksRoute,
   OccasionsRoute: OccasionsRoute,
   RequestReservationRoute: RequestReservationRoute,
