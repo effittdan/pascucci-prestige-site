@@ -46,13 +46,13 @@ function Hero() {
         src={heroImg}
         alt="White McLaren GT parked at a luxury hillside villa at dusk overlooking the sea"
         className="absolute inset-0 h-full w-full object-cover"
-        style={{ filter: "brightness(1.25)" }}
+        style={{ filter: "brightness(1.32) saturate(1.04)" }}
         width={1920}
         height={1080}
         fetchPriority="high"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/60 to-obsidian/30" />
-      <div className="absolute inset-0 bg-gradient-to-r from-obsidian/70 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-obsidian/70 via-obsidian/35 to-obsidian/5" />
+      <div className="absolute inset-0 bg-gradient-to-r from-obsidian/40 via-obsidian/10 to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-7xl w-full px-5 lg:px-10 pb-20 lg:pb-28 pt-32">
         <p className="eyebrow fade-up">

@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
-import { Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 
 export function SiteFooter() {
   return (
@@ -49,18 +49,13 @@ export function SiteFooter() {
                 San Antonio, Texas
               </li>
               <li className="flex items-start gap-3">
-                <Phone size={14} className="mt-1 text-gold" />
-                <a href="tel:+12100000000" className="hover:text-gold">(210) 000-0000</a>
-              </li>
-              <li className="flex items-start gap-3">
                 <Mail size={14} className="mt-1 text-gold" />
                 <a href="mailto:concierge@pascucciprestige.com" className="hover:text-gold">
                   concierge@pascucciprestige.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Instagram size={14} className="mt-1 text-gold" />
-                <a href="#" className="hover:text-gold">@pascucciprestige</a>
+                <Link to="/contact" className="hover:text-gold">Contact the concierge team</Link>
               </li>
             </ul>
           </div>

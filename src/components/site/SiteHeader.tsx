@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 
 const nav = [
@@ -87,9 +87,9 @@ export function SiteHeader() {
             >
               Request Reservation
             </Link>
-            <a href="tel:+12100000000" className="btn-ghost w-full">
-              <Phone size={14} /> Call Concierge
-            </a>
+            <Link to="/contact" onClick={() => setOpen(false)} className="btn-ghost w-full">
+              Contact Concierge
+            </Link>
           </div>
         </div>
       )}

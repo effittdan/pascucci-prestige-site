@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { MapPin, Phone, Mail, Instagram } from "lucide-react";
+import { MapPin, Mail } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -39,13 +39,6 @@ function ContactPage() {
                 </div>
               </li>
               <li className="flex items-start gap-4">
-                <Phone className="text-gold mt-1" size={18} />
-                <div>
-                  <p className="spec text-gold">Call or text</p>
-                  <a href="tel:+12100000000" className="text-ivory mt-1 block hover:text-gold">(210) 000-0000</a>
-                </div>
-              </li>
-              <li className="flex items-start gap-4">
                 <Mail className="text-gold mt-1" size={18} />
                 <div>
                   <p className="spec text-gold">Email</p>
@@ -55,10 +48,12 @@ function ContactPage() {
                 </div>
               </li>
               <li className="flex items-start gap-4">
-                <Instagram className="text-gold mt-1" size={18} />
                 <div>
-                  <p className="spec text-gold">Instagram</p>
-                  <a href="#" className="text-ivory mt-1 block hover:text-gold">@pascucciprestige</a>
+                  <p className="spec text-gold">Direct response</p>
+                  <p className="text-ivory mt-1">Use the reservation request form for the fastest concierge reply.</p>
+                  <Link to="/request-reservation" className="mt-3 inline-flex text-gold hover:text-ivory transition-colors">
+                    Open reservation request
+                  </Link>
                 </div>
               </li>
             </ul>
