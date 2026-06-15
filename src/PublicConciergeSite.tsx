@@ -36,14 +36,41 @@ const routeTitles: Record<RouteKey, string> = {
   "request-reservation": "Request a Reservation | Pascucci Prestige",
 };
 
-const fleet = [
+type FleetCar = {
+  name: string;
+  category: string;
+  line: string;
+  price: string;
+  specs: string;
+  image: string;
+  gallery: string[];
+  details: { label: string; value: string }[];
+  highlights: string[];
+};
+
+const fleet: FleetCar[] = [
   {
     name: "McLaren GT",
     category: "Grand Tourer",
     line: "Supercar presence with long-distance composure.",
     price: "Request pricing",
     specs: "2 passengers - RWD - delivery available",
-    image: asset("cars/mclaren-gt.png"),
+    image: asset("cars/mclaren-gt-01.png"),
+    gallery: [
+      asset("cars/mclaren-gt-01.png"),
+      asset("cars/mclaren-gt-02.png"),
+      asset("cars/mclaren-gt-03.png"),
+      asset("cars/mclaren-gt-04.png"),
+    ],
+    details: [
+      { label: "Engine", value: "4.0L twin-turbocharged V8" },
+      { label: "Transmission", value: "7-speed dual-clutch automatic" },
+      { label: "Drivetrain", value: "Rear-wheel drive" },
+      { label: "Passengers", value: "2" },
+      { label: "Power", value: "612 hp" },
+      { label: "Best for", value: "Weekend escapes, arrivals, executive occasions" },
+    ],
+    highlights: ["Grand touring comfort", "Low-slung supercar profile", "Concierge delivery available"],
   },
   {
     name: "Lamborghini Urus",
@@ -51,7 +78,22 @@ const fleet = [
     line: "Supercar soul. SUV freedom.",
     price: "From $1,495 / day",
     specs: "5 passengers - AWD - 641 hp",
-    image: asset("cars/lamborghini-urus.png"),
+    image: asset("cars/lamborghini-urus-orange-01.png"),
+    gallery: [
+      asset("cars/lamborghini-urus-orange-01.png"),
+      asset("cars/lamborghini-urus-orange-02.png"),
+      asset("cars/lamborghini-urus-orange-03.png"),
+      asset("cars/lamborghini-urus-orange-04.png"),
+    ],
+    details: [
+      { label: "Engine", value: "4.0L twin-turbocharged V8" },
+      { label: "Transmission", value: "8-speed automatic" },
+      { label: "Drivetrain", value: "All-wheel drive" },
+      { label: "Passengers", value: "5" },
+      { label: "Power", value: "641 hp" },
+      { label: "Best for", value: "Group arrivals, weddings, city weekends" },
+    ],
+    highlights: ["Orange exterior", "Super-SUV performance", "Flexible delivery and pickup"],
   },
   {
     name: "Ferrari 296",
@@ -60,6 +102,16 @@ const fleet = [
     price: "Request pricing",
     specs: "2 passengers - RWD - hybrid V6",
     image: asset("cars/ferrari-296.png"),
+    gallery: [asset("cars/ferrari-296.png")],
+    details: [
+      { label: "Engine", value: "Twin-turbo V6 plug-in hybrid" },
+      { label: "Transmission", value: "8-speed dual-clutch automatic" },
+      { label: "Drivetrain", value: "Rear-wheel drive" },
+      { label: "Passengers", value: "2" },
+      { label: "Power", value: "819 hp combined" },
+      { label: "Best for", value: "Milestone moments and exotic weekend drives" },
+    ],
+    highlights: ["Hybrid Ferrari performance", "Compact exotic profile", "Availability by request"],
   },
   {
     name: "Maserati MC20",
@@ -68,6 +120,16 @@ const fleet = [
     price: "Request pricing",
     specs: "2 passengers - RWD - 621 hp",
     image: asset("cars/maserati-mc20.png"),
+    gallery: [asset("cars/maserati-mc20.png")],
+    details: [
+      { label: "Engine", value: "3.0L twin-turbo Nettuno V6" },
+      { label: "Transmission", value: "8-speed dual-clutch automatic" },
+      { label: "Drivetrain", value: "Rear-wheel drive" },
+      { label: "Passengers", value: "2" },
+      { label: "Power", value: "621 hp" },
+      { label: "Best for", value: "Supercar experiences and special events" },
+    ],
+    highlights: ["Italian supercar feel", "Butterfly doors", "Low-production presence"],
   },
   {
     name: "Mercedes-AMG G63",
@@ -76,6 +138,16 @@ const fleet = [
     price: "From $1,295 / day",
     specs: "5 passengers - AWD - delivery available",
     image: asset("cars/mercedes-g63.png"),
+    gallery: [asset("cars/mercedes-g63.png")],
+    details: [
+      { label: "Engine", value: "4.0L biturbo V8" },
+      { label: "Transmission", value: "9-speed automatic" },
+      { label: "Drivetrain", value: "All-wheel drive" },
+      { label: "Passengers", value: "5" },
+      { label: "Power", value: "577 hp" },
+      { label: "Best for", value: "Executive movement, families, hotel arrivals" },
+    ],
+    highlights: ["Iconic G-Class stance", "Luxury SUV practicality", "Concierge delivery available"],
   },
 ];
 
@@ -105,6 +177,7 @@ function resolveRoute(pathname: string): RouteKey {
 
 export function PublicConciergeSite() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [selectedCar, setSelectedCar] = useState<FleetCar | null>(null);
   const route = resolveRoute(window.location.pathname);
 
   useMemo(() => {
@@ -114,8 +187,8 @@ export function PublicConciergeSite() {
   return (
     <div className="public-site">
       <Header route={route} mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
-      {route === "home" && <HomePage />}
-      {route === "fleet" && <FleetPage />}
+      {route === "home" && <HomePage onSelectCar={setSelectedCar} />}
+      {route === "fleet" && <FleetPage onSelectCar={setSelectedCar} />}
       {route === "concierge" && <ConciergePage />}
       {route === "occasions" && <OccasionsPage />}
       {route === "how-it-works" && <HowItWorksPage />}
@@ -124,6 +197,7 @@ export function PublicConciergeSite() {
       {route === "contact" && <ContactPage />}
       {route === "request-reservation" && <ReservationPage />}
       <Footer />
+      {selectedCar && <FleetDetailsModal car={selectedCar} onClose={() => setSelectedCar(null)} />}
     </div>
   );
 }
@@ -165,7 +239,7 @@ function Header({
   );
 }
 
-function HomePage() {
+function HomePage({ onSelectCar }: { onSelectCar: (car: FleetCar) => void }) {
   return (
     <main>
       <section className="public-hero">
@@ -185,7 +259,7 @@ function HomePage() {
         </div>
         <span className="scroll-cue">Scroll</span>
       </section>
-      <FleetPreview />
+      <FleetPreview onSelectCar={onSelectCar} />
       <ConciergePromise />
       <ProcessPreview />
       <OccasionPreview />
@@ -196,34 +270,81 @@ function HomePage() {
   );
 }
 
-function FleetPreview() {
+function FleetPreview({ onSelectCar }: { onSelectCar: (car: FleetCar) => void }) {
   return (
     <section className="public-section obsidian" id="fleet">
       <SectionTitle kicker="The fleet" title="Curated. Maintained. Ready." action="View full fleet" href="/fleet" />
       <div className="fleet-grid">
-        {fleet.slice(0, 3).map((car) => <FleetCard car={car} key={car.name} />)}
+        {fleet.slice(0, 3).map((car) => <FleetCard car={car} key={car.name} onSelectCar={onSelectCar} />)}
       </div>
     </section>
   );
 }
 
-function FleetCard({ car }: { car: (typeof fleet)[number] }) {
+function FleetCard({ car, onSelectCar }: { car: FleetCar; onSelectCar: (car: FleetCar) => void }) {
   return (
     <article className="fleet-card">
-      <a href="/fleet" className="fleet-image">
+      <button type="button" className="fleet-image" onClick={() => onSelectCar(car)} aria-label={`View details for ${car.name}`}>
         <img src={car.image} alt={`${car.name} - ${car.category}`} />
-      </a>
+      </button>
       <div className="fleet-card-body">
         <span>{car.category}</span>
         <h2>{car.name}</h2>
         <strong>{car.price}</strong>
         <p>{car.specs}</p>
-        <div>
-          <a href="/fleet">View details <ArrowRight size={15} /></a>
+        <div className="fleet-card-actions">
+          <button type="button" onClick={() => onSelectCar(car)}>View details <ArrowRight size={15} /></button>
           <a href="/request-reservation">Ask about availability</a>
         </div>
       </div>
     </article>
+  );
+}
+
+function FleetDetailsModal({ car, onClose }: { car: FleetCar; onClose: () => void }) {
+  return (
+    <div className="fleet-modal-backdrop" role="presentation" onClick={onClose}>
+      <section
+        className="fleet-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="fleet-modal-title"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <button className="fleet-modal-close" type="button" onClick={onClose} aria-label="Close vehicle details">
+          <X size={18} />
+        </button>
+        <div className="fleet-modal-copy">
+          <span className="public-kicker">{car.category}</span>
+          <h2 id="fleet-modal-title">{car.name}</h2>
+          <p>{car.line}</p>
+          <div className="fleet-modal-highlights">
+            {car.highlights.map((highlight) => (
+              <span key={highlight}>{highlight}</span>
+            ))}
+          </div>
+        </div>
+        <div className="fleet-modal-gallery">
+          {car.gallery.map((photo, index) => (
+            <figure key={photo}>
+              <img src={photo} alt={`${car.name} view ${index + 1}`} />
+            </figure>
+          ))}
+        </div>
+        <div className="fleet-modal-details">
+          {car.details.map((detail) => (
+            <article key={detail.label}>
+              <span>{detail.label}</span>
+              <strong>{detail.value}</strong>
+            </article>
+          ))}
+        </div>
+        <div className="fleet-modal-actions">
+          <a className="button primary" href="/request-reservation">Ask about availability</a>
+          <button type="button" className="button ghost" onClick={onClose}>Return to fleet</button>
+        </div>
+      </section>
+    </div>
   );
 }
 
@@ -338,13 +459,13 @@ function ReserveBand() {
   );
 }
 
-function FleetPage() {
+function FleetPage({ onSelectCar }: { onSelectCar: (car: FleetCar) => void }) {
   return (
     <main className="page-main">
       <PageHero kicker="The fleet" title="Exceptional vehicles, ready on request." text="Each vehicle is privately maintained, detailed before every delivery, and reserved by request to ensure availability." />
       <section className="public-section obsidian tight">
         <div className="fleet-grid full">
-          {fleet.map((car) => <FleetCard car={car} key={car.name} />)}
+          {fleet.map((car) => <FleetCard car={car} key={car.name} onSelectCar={onSelectCar} />)}
         </div>
       </section>
     </main>
