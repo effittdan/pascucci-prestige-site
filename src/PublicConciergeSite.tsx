@@ -53,7 +53,7 @@ const fleet: FleetCar[] = [
     name: "McLaren GT",
     category: "Grand Tourer",
     line: "Supercar presence with long-distance composure.",
-    price: "Request pricing",
+    price: "$1,099 / day or $250 / hour",
     specs: "2 passengers - RWD - delivery available",
     image: asset("cars/mclaren-gt-01.png"),
     gallery: [
@@ -68,6 +68,7 @@ const fleet: FleetCar[] = [
       { label: "Drivetrain", value: "Rear-wheel drive" },
       { label: "Passengers", value: "2" },
       { label: "Power", value: "612 hp" },
+      { label: "Rate", value: "$1,099 per day or $250 per hour" },
       { label: "Best for", value: "Weekend escapes, arrivals, executive occasions" },
     ],
     highlights: ["Grand touring comfort", "Low-slung supercar profile", "Concierge delivery available"],
@@ -76,7 +77,7 @@ const fleet: FleetCar[] = [
     name: "Lamborghini Urus",
     category: "Luxury SUV",
     line: "Supercar soul. SUV freedom.",
-    price: "From $1,495 / day",
+    price: "$1,199 / day or $300 / hour",
     specs: "5 passengers - AWD - 641 hp",
     image: asset("cars/lamborghini-urus-orange-01.png"),
     gallery: [
@@ -91,6 +92,7 @@ const fleet: FleetCar[] = [
       { label: "Drivetrain", value: "All-wheel drive" },
       { label: "Passengers", value: "5" },
       { label: "Power", value: "641 hp" },
+      { label: "Rate", value: "$1,199 per day or $300 per hour" },
       { label: "Best for", value: "Group arrivals, weddings, city weekends" },
     ],
     highlights: ["Orange exterior", "Super-SUV performance", "Flexible delivery and pickup"],
