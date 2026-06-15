@@ -98,7 +98,7 @@ const fleet: FleetCar[] = [
     highlights: ["Orange exterior", "Super-SUV performance", "Flexible delivery and pickup"],
   },
   {
-    name: "2023 Porsche 911 Cabriolet",
+    name: "Porsche 911 Cabriolet",
     category: "Convertible",
     line: "Open-air precision with everyday polish.",
     price: "Request pricing",
