@@ -1,0 +1,347 @@
+import {
+  BadgeDollarSign,
+  CalendarDays,
+  CarFront,
+  ClipboardCheck,
+  FileCheck2,
+  Gauge,
+  Home,
+  LucideIcon,
+  MessagesSquare,
+  Settings,
+  ShieldCheck,
+  UserRoundCheck,
+  UsersRound,
+  Wrench,
+} from "lucide-react";
+
+export type Role =
+  | "owner_admin"
+  | "operations_manager"
+  | "concierge"
+  | "finance"
+  | "driver"
+  | "marketing";
+
+export type ReadinessState = "complete" | "pending" | "warning" | "blocked" | "overridden";
+
+export type ModuleId =
+  | "today"
+  | "calendar"
+  | "reservations"
+  | "fleet"
+  | "customers"
+  | "leads"
+  | "operations"
+  | "inspections"
+  | "maintenance"
+  | "messages"
+  | "finance"
+  | "reports"
+  | "settings";
+
+export type NavItem = {
+  id: ModuleId;
+  label: string;
+  icon: LucideIcon;
+  roles: Role[];
+};
+
+export const roles: { id: Role; label: string; description: string }[] = [
+  {
+    id: "owner_admin",
+    label: "Owner Admin",
+    description: "Full access, approvals, settings, audit, and finance.",
+  },
+  {
+    id: "operations_manager",
+    label: "Operations Manager",
+    description: "Runs daily fleet, reservations, tasks, and inspections.",
+  },
+  {
+    id: "concierge",
+    label: "Concierge",
+    description: "Leads, customers, documents, quotes, and coordination.",
+  },
+  {
+    id: "finance",
+    label: "Finance",
+    description: "Payments, charges, refunds, and financial reports.",
+  },
+  {
+    id: "driver",
+    label: "Driver",
+    description: "Assigned delivery, pickup, and inspection workflows.",
+  },
+];
+
+export const navItems: NavItem[] = [
+  { id: "today", label: "Today", icon: Home, roles: ["owner_admin", "operations_manager", "concierge", "driver"] },
+  { id: "calendar", label: "Calendar", icon: CalendarDays, roles: ["owner_admin", "operations_manager", "concierge"] },
+  { id: "reservations", label: "Reservations", icon: ClipboardCheck, roles: ["owner_admin", "operations_manager", "concierge"] },
+  { id: "fleet", label: "Fleet", icon: CarFront, roles: ["owner_admin", "operations_manager", "concierge"] },
+  { id: "customers", label: "Customers", icon: UsersRound, roles: ["owner_admin", "operations_manager", "concierge"] },
+  { id: "leads", label: "Leads & Quotes", icon: UserRoundCheck, roles: ["owner_admin", "operations_manager", "concierge", "marketing"] },
+  { id: "operations", label: "Operations", icon: Gauge, roles: ["owner_admin", "operations_manager", "concierge", "driver"] },
+  { id: "inspections", label: "Inspections", icon: FileCheck2, roles: ["owner_admin", "operations_manager", "driver"] },
+  { id: "maintenance", label: "Maintenance", icon: Wrench, roles: ["owner_admin", "operations_manager"] },
+  { id: "messages", label: "Messages", icon: MessagesSquare, roles: ["owner_admin", "operations_manager", "concierge", "driver"] },
+  { id: "finance", label: "Finance", icon: BadgeDollarSign, roles: ["owner_admin", "finance"] },
+  { id: "reports", label: "Reports", icon: Gauge, roles: ["owner_admin", "operations_manager", "finance"] },
+  { id: "settings", label: "Settings", icon: Settings, roles: ["owner_admin"] },
+];
+
+export const metricCards = [
+  { label: "Departures", value: "4", detail: "2 awaiting final readiness", tone: "warning" },
+  { label: "Returns", value: "3", detail: "1 inspection incomplete", tone: "pending" },
+  { label: "Open leads", value: "12", detail: "5 new since yesterday", tone: "complete" },
+  { label: "Blocked vehicles", value: "2", detail: "maintenance or incident hold", tone: "blocked" },
+];
+
+export const readinessItems: { label: string; state: ReadinessState; detail: string }[] = [
+  { label: "Customer", state: "complete", detail: "Approved profile" },
+  { label: "Drivers", state: "warning", detail: "Secondary driver review due" },
+  { label: "Documents", state: "blocked", detail: "Insurance expires today" },
+  { label: "Agreement", state: "pending", detail: "Sent, not signed" },
+  { label: "Payment", state: "complete", detail: "Authorization active" },
+  { label: "Vehicle", state: "complete", detail: "Detailed and staged" },
+  { label: "Delivery", state: "overridden", detail: "Owner approved hotel handoff" },
+];
+
+export const timelineEvents = [
+  {
+    time: "8:30 AM",
+    activity: "Delivery",
+    vehicle: "Lamborghini Urus",
+    customer: "Avery Stone",
+    location: "Hotel Emma",
+    owner: "Theresa",
+    status: "Operations warning",
+  },
+  {
+    time: "10:00 AM",
+    activity: "Return",
+    vehicle: "Mercedes G63",
+    customer: "Miles Carter",
+    location: "SAT private arrivals",
+    owner: "Dan",
+    status: "On track",
+  },
+  {
+    time: "1:15 PM",
+    activity: "Prep",
+    vehicle: "Porsche 911 Carrera",
+    customer: "Natalie Reyes",
+    location: "North showroom",
+    owner: "Rosie",
+    status: "Needs documents",
+  },
+  {
+    time: "4:00 PM",
+    activity: "Delivery",
+    vehicle: "Range Rover Autobiography",
+    customer: "Bennett Group",
+    location: "Pearl District",
+    owner: "Contract driver",
+    status: "Ready",
+  },
+];
+
+export const attentionQueue = [
+  { label: "Insurance document expires before return", entity: "PP-R-2026-00042", severity: "Blocked" },
+  { label: "Delivery assignment has no confirmed driver", entity: "Urus at Hotel Emma", severity: "Warning" },
+  { label: "Agreement viewed but not signed", entity: "Natalie Reyes", severity: "Pending" },
+  { label: "Return inspection photos unsynced", entity: "G63 return", severity: "Warning" },
+  { label: "Security authorization release due", entity: "PP-R-2026-00037", severity: "Finance" },
+];
+
+export const vehicles = [
+  { name: "Lamborghini Urus", plate: "PP-URUS", status: "Staged", next: "Delivery 8:30 AM", revenue: "$4,850", readiness: 91 },
+  { name: "Mercedes G63", plate: "PP-G63", status: "Active rental", next: "Return 10:00 AM", revenue: "$3,200", readiness: 84 },
+  { name: "Porsche 911 Carrera", plate: "PP-911", status: "Preparing", next: "Inspection 12:45 PM", revenue: "$2,775", readiness: 67 },
+  { name: "Range Rover Autobiography", plate: "PP-RR", status: "Ready", next: "Delivery 4:00 PM", revenue: "$2,150", readiness: 96 },
+];
+
+export const reservations = [
+  { id: "PP-R-2026-00042", customer: "Avery Stone", vehicle: "Lamborghini Urus", status: "Pending approval", total: "$4,850", dates: "Jun 8-11", issue: "Document blocked" },
+  { id: "PP-R-2026-00043", customer: "Bennett Group", vehicle: "Range Rover Autobiography", status: "Confirmed", total: "$2,150", dates: "Jun 8-9", issue: "Ready" },
+  { id: "PP-R-2026-00044", customer: "Natalie Reyes", vehicle: "Porsche 911 Carrera", status: "Quote accepted", total: "$2,775", dates: "Jun 9-12", issue: "Agreement pending" },
+];
+
+export const tasks = [
+  { title: "Confirm hotel delivery contact", type: "Delivery", due: "7:45 AM", assignee: "Theresa", status: "In progress" },
+  { title: "Review updated insurance card", type: "Document review", due: "9:00 AM", assignee: "Rosie", status: "Blocked" },
+  { title: "Capture return mileage and dashboard", type: "Inspection", due: "10:15 AM", assignee: "Dan", status: "Open" },
+  { title: "Prep Range Rover accessories kit", type: "Vehicle prep", due: "2:30 PM", assignee: "Mark Motors", status: "Open" },
+];
+
+export const auditEvents = [
+  { action: "Role assigned", actor: "Jerry", entity: "Theresa", time: "7:11 AM" },
+  { action: "Override approved", actor: "Jerry", entity: "PP-R-2026-00042", time: "7:34 AM" },
+  { action: "Status transition", actor: "Dan", entity: "PP-R-2026-00043", time: "8:02 AM" },
+];
+
+export const serviceBoundaries = [
+  "Reservation service",
+  "Availability service",
+  "Pricing service",
+  "Approval service",
+  "Inspection service",
+  "Finance service",
+  "Audit service",
+];
+
+export const securityPrinciples = [
+  { icon: ShieldCheck, label: "RLS-first permissions", text: "Every future mutation and record view maps to a role and organization policy." },
+  { icon: FileCheck2, label: "Private document handling", text: "Sensitive files are designed for private buckets and signed access." },
+  { icon: ClipboardCheck, label: "Audited state changes", text: "Role changes, overrides, payments, and status transitions are modeled as traceable events." },
+];
+
+export type InspectionStatus = "Draft" | "In progress" | "Awaiting acknowledgment" | "Under review" | "Completed";
+
+export type DamageReviewStatus = "Not required" | "Pending" | "Possible change" | "Confirmed new damage" | "Dismissed";
+
+export type InspectionQueueItem = {
+  id: string;
+  reservation: string;
+  customer: string;
+  vehicle: string;
+  type: "Checkout" | "Return" | "Inventory";
+  status: InspectionStatus;
+  damageReview: DamageReviewStatus;
+  due: string;
+  assignedTo: string;
+  requiredPhotos: number;
+  completedPhotos: number;
+  note: string;
+};
+
+export type InspectionZone = {
+  code: string;
+  label: string;
+  group: string;
+  required: boolean;
+  complete: boolean;
+  quality: "Ready" | "Needs retake" | "Reference only" | "Missing";
+};
+
+export type ComparisonPair = {
+  zone: string;
+  checkoutTime: string;
+  returnTime: string;
+  status: DamageReviewStatus;
+  note: string;
+};
+
+export const inspectionMetrics = [
+  { label: "Due today", value: "7", detail: "4 checkout, 3 return" },
+  { label: "Photo zones open", value: "18", detail: "Across active inspections" },
+  { label: "Acknowledgments", value: "2", detail: "Customer review pending" },
+  { label: "Manager reviews", value: "3", detail: "Possible damage flags" },
+];
+
+export const inspectionQueue: InspectionQueueItem[] = [
+  {
+    id: "INS-2026-0142",
+    reservation: "PP-R-2026-00042",
+    customer: "Avery Stone",
+    vehicle: "Lamborghini Urus",
+    type: "Checkout",
+    status: "In progress",
+    damageReview: "Not required",
+    due: "8:15 AM",
+    assignedTo: "Theresa",
+    requiredPhotos: 30,
+    completedPhotos: 22,
+    note: "Exterior complete. Interior, keys, and fuel display remain.",
+  },
+  {
+    id: "INS-2026-0139",
+    reservation: "PP-R-2026-00038",
+    customer: "Miles Carter",
+    vehicle: "Mercedes-Benz G 63",
+    type: "Return",
+    status: "Under review",
+    damageReview: "Possible change",
+    due: "10:15 AM",
+    assignedTo: "Dan",
+    requiredPhotos: 30,
+    completedPhotos: 30,
+    note: "Passenger rear wheel flag needs manager decision.",
+  },
+  {
+    id: "INS-2026-0145",
+    reservation: "PP-R-2026-00043",
+    customer: "Bennett Group",
+    vehicle: "Range Rover Autobiography",
+    type: "Checkout",
+    status: "Awaiting acknowledgment",
+    damageReview: "Not required",
+    due: "3:30 PM",
+    assignedTo: "Rosie",
+    requiredPhotos: 30,
+    completedPhotos: 30,
+    note: "Customer link sent. Internal report is locked.",
+  },
+  {
+    id: "INS-2026-0148",
+    reservation: "PP-R-2026-00047",
+    customer: "Sofia Nguyen",
+    vehicle: "Ferrari 296",
+    type: "Return",
+    status: "Draft",
+    damageReview: "Pending",
+    due: "5:00 PM",
+    assignedTo: "Mark",
+    requiredPhotos: 30,
+    completedPhotos: 4,
+    note: "Return photos started after airport pickup.",
+  },
+];
+
+export const inspectionZones: InspectionZone[] = [
+  { code: "front", label: "Front straight-on", group: "Exterior", required: true, complete: true, quality: "Ready" },
+  { code: "rear", label: "Rear straight-on", group: "Exterior", required: true, complete: true, quality: "Ready" },
+  { code: "driver-side", label: "Driver side", group: "Exterior", required: true, complete: true, quality: "Ready" },
+  { code: "passenger-side", label: "Passenger side", group: "Exterior", required: true, complete: true, quality: "Ready" },
+  { code: "fd-wheel", label: "Front driver wheel", group: "Wheels", required: true, complete: true, quality: "Reference only" },
+  { code: "fp-wheel", label: "Front passenger wheel", group: "Wheels", required: true, complete: true, quality: "Ready" },
+  { code: "rd-wheel", label: "Rear driver wheel", group: "Wheels", required: true, complete: false, quality: "Needs retake" },
+  { code: "rp-wheel", label: "Rear passenger wheel", group: "Wheels", required: true, complete: false, quality: "Missing" },
+  { code: "cockpit", label: "Driver cockpit and dashboard", group: "Interior", required: true, complete: false, quality: "Missing" },
+  { code: "odometer", label: "Odometer and warning lights", group: "Interior", required: true, complete: false, quality: "Missing" },
+  { code: "keys", label: "Key and accessory set", group: "Additional", required: true, complete: false, quality: "Missing" },
+];
+
+export const comparisonPairs: ComparisonPair[] = [
+  {
+    zone: "Passenger rear wheel",
+    checkoutTime: "Jun 8, 8:04 AM",
+    returnTime: "Jun 9, 10:18 AM",
+    status: "Possible change",
+    note: "New outer-rim mark flagged by staff. Manager review required before claim language.",
+  },
+  {
+    zone: "Front fascia and lower splitter",
+    checkoutTime: "Jun 8, 8:06 AM",
+    returnTime: "Jun 9, 10:21 AM",
+    status: "Dismissed",
+    note: "Lighting variation only. Existing marker retained on customer-facing report.",
+  },
+  {
+    zone: "Cargo area",
+    checkoutTime: "Jun 8, 8:12 AM",
+    returnTime: "Jun 9, 10:26 AM",
+    status: "Not required",
+    note: "No visible change. Accessory kit confirmed.",
+  },
+];
+
+export const inspectionFoundation = [
+  "Private original image storage with signed display URLs",
+  "Versioned inspection records locked after submission",
+  "Customer-safe report snapshots separate from internal notes",
+  "Human-only damage confirmation and charge decisions",
+  "Audit events for uploads, retakes, annotations, review, and voids",
+  "Future AI comparison boundary returns possible changes only",
+];
