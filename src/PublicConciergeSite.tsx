@@ -38,6 +38,14 @@ const routeTitles: Record<RouteKey, string> = {
 
 const fleet = [
   {
+    name: "McLaren GT",
+    category: "Grand Tourer",
+    line: "Supercar presence with long-distance composure.",
+    price: "Request pricing",
+    specs: "2 passengers - RWD - delivery available",
+    image: asset("cars/mclaren-gt.png"),
+  },
+  {
     name: "Lamborghini Urus",
     category: "Luxury SUV",
     line: "Supercar soul. SUV freedom.",
