@@ -594,7 +594,7 @@ function ContactPage() {
       <PageHero kicker="Contact" title="Speak with a concierge." text="We respond personally - typically within an hour during business hours. For active reservations, please call directly." />
       <section className="public-section obsidian tight contact-layout">
         <article><span>Service area</span><strong>San Antonio, Texas & greater Bexar County</strong></article>
-        <article><span>Email</span><a href="mailto:concierge@pascucciprestige.com">concierge@pascucciprestige.com</a></article>
+        <article><span>Email</span><a href="mailto:jerry@pascucciprestigerentals.com">jerry@pascucciprestigerentals.com</a></article>
         <article><span>Direct response</span><a href="/request-reservation">Open reservation request</a></article>
       </section>
       <ReserveBand />
@@ -694,7 +694,7 @@ function Footer() {
       <div>
         <h2>Concierge</h2>
         <p>San Antonio, Texas</p>
-        <a href="mailto:concierge@pascucciprestige.com">concierge@pascucciprestige.com</a>
+        <a href="mailto:jerry@pascucciprestigerentals.com">jerry@pascucciprestigerentals.com</a>
         <a href="/contact">Contact the concierge team</a>
       </div>
       <small>© 2026 Pascucci Prestige. All rights reserved. Luxury Auto Concierge - San Antonio, TX</small>
