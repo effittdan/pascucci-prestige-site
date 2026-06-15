@@ -101,7 +101,7 @@ const fleet: FleetCar[] = [
     name: "Porsche 911 Cabriolet",
     category: "Convertible",
     line: "Open-air precision with everyday polish.",
-    price: "Request pricing",
+    price: "$799 / day or $160 / hour",
     specs: "4 passengers - RWD - open-top touring",
     image: asset("cars/porsche-911-cabriolet-01.png"),
     gallery: [
@@ -117,6 +117,7 @@ const fleet: FleetCar[] = [
       { label: "Passengers", value: "4" },
       { label: "Power", value: "379 hp" },
       { label: "Roof", value: "Power convertible soft top" },
+      { label: "Rate", value: "$799 per day or $160 per hour" },
       { label: "Best for", value: "Coastal drives, date nights, weekend escapes" },
     ],
     highlights: ["Silver cabriolet", "Open-air grand touring", "Availability by request"],
