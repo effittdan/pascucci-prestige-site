@@ -2,6 +2,9 @@ import { useMemo, useState } from "react";
 import { ArrowRight, Check, ChevronDown, Menu, X } from "lucide-react";
 
 const asset = (path: string) => `/concierge-assets/${path}`;
+const contactEmail = "jerry@pascucciprestigerentals.com";
+const reservationEmailHref = `mailto:${contactEmail}?subject=Pascucci%20Prestige%20Reservation%20Request`;
+const conciergeEmailHref = `mailto:${contactEmail}?subject=Pascucci%20Prestige%20Concierge%20Inquiry`;
 
 type RouteKey =
   | "home"
@@ -232,7 +235,7 @@ function Header({
           </a>
         ))}
       </nav>
-      <a className="nav-reserve" href="/request-reservation">Request reservation</a>
+      <a className="nav-reserve" href={reservationEmailHref}>Request reservation</a>
       <button className="mobile-nav-toggle" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
         {mobileOpen ? <X size={22} /> : <Menu size={22} />}
       </button>
@@ -241,7 +244,7 @@ function Header({
           {navItems.map((item) => (
             <a key={item.route} href={item.href}>{item.label}</a>
           ))}
-          <a href="/request-reservation">Request reservation</a>
+          <a href={reservationEmailHref}>Request reservation</a>
         </div>
       )}
     </header>
@@ -263,7 +266,7 @@ function HomePage({ onSelectCar }: { onSelectCar: (car: FleetCar) => void }) {
           <p>Luxury and exotic vehicle access in San Antonio, delivered with concierge-level service. Your vehicle. Your schedule. Your arrival.</p>
           <div className="hero-actions">
             <a className="button ghost" href="/fleet">View the fleet <ArrowRight size={16} /></a>
-            <a className="button primary" href="/request-reservation">Request a reservation</a>
+            <a className="button primary" href={reservationEmailHref}>Request a reservation</a>
           </div>
         </div>
         <span className="scroll-cue">Scroll</span>
@@ -303,7 +306,7 @@ function FleetCard({ car, onSelectCar }: { car: FleetCar; onSelectCar: (car: Fle
         <p>{car.specs}</p>
         <div className="fleet-card-actions">
           <button type="button" onClick={() => onSelectCar(car)}>View details <ArrowRight size={15} /></button>
-          <a href="/request-reservation">Ask about availability</a>
+          <a href={reservationEmailHref}>Ask about availability</a>
         </div>
       </div>
     </article>
@@ -349,7 +352,7 @@ function FleetDetailsModal({ car, onClose }: { car: FleetCar; onClose: () => voi
           ))}
         </div>
         <div className="fleet-modal-actions">
-          <a className="button primary" href="/request-reservation">Ask about availability</a>
+          <a className="button primary" href={reservationEmailHref}>Ask about availability</a>
           <button type="button" className="button ghost" onClick={onClose}>Return to fleet</button>
         </div>
       </section>
@@ -461,8 +464,8 @@ function ReserveBand() {
       <h2>Your vehicle. Your schedule. Your arrival.</h2>
       <p>Tell us when, where and which vehicle. A concierge will respond personally to confirm availability and delivery.</p>
       <div>
-        <a className="button dark" href="/request-reservation">Request a reservation</a>
-        <a className="button outline-dark" href="/contact">Contact concierge</a>
+        <a className="button dark" href={reservationEmailHref}>Request a reservation</a>
+        <a className="button outline-dark" href={conciergeEmailHref}>Contact concierge</a>
       </div>
     </section>
   );
@@ -490,7 +493,7 @@ function ConciergePage() {
         <div className="service-grid">
           {services.map((service) => <article key={service}><h2>{service}</h2><p>{serviceDescriptions[service]}</p></article>)}
         </div>
-        <a className="button primary" href="/request-reservation">Schedule delivery</a>
+        <a className="button primary" href={reservationEmailHref}>Schedule delivery</a>
       </section>
     </main>
   );
@@ -512,7 +515,7 @@ function OccasionsPage() {
       <section className="public-section obsidian tight">
         <div className="occasion-grid page">
           {occasions.map(([title, text, vehicles]) => (
-            <a className="occasion-card" href="/request-reservation" key={title}>
+            <a className="occasion-card" href={reservationEmailHref} key={title}>
               <h2>{title}</h2>
               <p>{text}</p>
               <small>{vehicles}</small>
@@ -560,7 +563,7 @@ function AboutPage() {
         <p>Pascucci Prestige was built on a simple idea: extraordinary vehicles deserve an extraordinary experience. No counters. No queues. Every reservation handled personally.</p>
         <p>Our fleet is intentionally small and obsessively maintained. Each vehicle is detailed and inspected before delivery, briefed at handoff, and collected when you are done.</p>
         <p>San Antonio is home - its hotels, neighborhoods, airport and calendar of weddings, premieres and milestones shape how we serve.</p>
-        <a className="button primary" href="/request-reservation">Reserve your vehicle</a>
+        <a className="button primary" href={reservationEmailHref}>Reserve your vehicle</a>
       </section>
     </main>
   );
@@ -583,7 +586,7 @@ function FaqPage() {
             </article>
           ))}
         </div>
-        <a className="button primary" href="/contact">Still curious? Contact concierge</a>
+        <a className="button primary" href={conciergeEmailHref}>Still curious? Contact concierge</a>
       </section>
     </main>
   );
@@ -595,8 +598,8 @@ function ContactPage() {
       <PageHero kicker="Contact" title="Speak with a concierge." text="We respond personally - typically within an hour during business hours. For active reservations, please call directly." />
       <section className="public-section obsidian tight contact-layout">
         <article><span>Service area</span><strong>San Antonio, Texas & greater Bexar County</strong></article>
-        <article><span>Email</span><a href="mailto:jerry@pascucciprestigerentals.com">jerry@pascucciprestigerentals.com</a></article>
-        <article><span>Direct response</span><a href="/request-reservation">Open reservation request</a></article>
+        <article><span>Email</span><a href={`mailto:${contactEmail}`}>{contactEmail}</a></article>
+        <article><span>Direct response</span><a href={reservationEmailHref}>Open reservation request</a></article>
       </section>
       <ReserveBand />
     </main>
@@ -648,7 +651,7 @@ function ReservationPage() {
               </fieldset>
               <div className="form-actions">
                 <button type="submit">Request a reservation</button>
-                <a href="/contact">Contact concierge</a>
+                <a href={conciergeEmailHref}>Contact concierge</a>
               </div>
             </>
           )}
@@ -686,7 +689,7 @@ function Footer() {
       <div>
         <img src={asset("pascucci-prestige-logo.png")} alt="Pascucci Prestige" />
         <p>A private automotive concierge in San Antonio. Curated luxury and exotic vehicles, delivered to your hotel, residence, or arrival terminal.</p>
-        <a className="button primary" href="/request-reservation">Request reservation</a>
+        <a className="button primary" href={reservationEmailHref}>Request reservation</a>
       </div>
       <div>
         <h2>Explore</h2>
@@ -695,8 +698,8 @@ function Footer() {
       <div>
         <h2>Concierge</h2>
         <p>San Antonio, Texas</p>
-        <a href="mailto:jerry@pascucciprestigerentals.com">jerry@pascucciprestigerentals.com</a>
-        <a href="/contact">Contact the concierge team</a>
+        <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+        <a href={conciergeEmailHref}>Contact the concierge team</a>
       </div>
       <small>© 2026 Pascucci Prestige. All rights reserved. Luxury Auto Concierge - San Antonio, TX</small>
     </footer>
