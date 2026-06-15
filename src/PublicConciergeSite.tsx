@@ -98,22 +98,28 @@ const fleet: FleetCar[] = [
     highlights: ["Orange exterior", "Super-SUV performance", "Flexible delivery and pickup"],
   },
   {
-    name: "Ferrari 296",
-    category: "Exotic",
-    line: "Italian theatre, on demand.",
+    name: "2023 Porsche 911 Cabriolet",
+    category: "Convertible",
+    line: "Open-air precision with everyday polish.",
     price: "Request pricing",
-    specs: "2 passengers - RWD - hybrid V6",
-    image: asset("cars/ferrari-296.png"),
-    gallery: [asset("cars/ferrari-296.png")],
-    details: [
-      { label: "Engine", value: "Twin-turbo V6 plug-in hybrid" },
-      { label: "Transmission", value: "8-speed dual-clutch automatic" },
-      { label: "Drivetrain", value: "Rear-wheel drive" },
-      { label: "Passengers", value: "2" },
-      { label: "Power", value: "819 hp combined" },
-      { label: "Best for", value: "Milestone moments and exotic weekend drives" },
+    specs: "4 passengers - RWD - open-top touring",
+    image: asset("cars/porsche-911-cabriolet-01.png"),
+    gallery: [
+      asset("cars/porsche-911-cabriolet-01.png"),
+      asset("cars/porsche-911-cabriolet-02.png"),
+      asset("cars/porsche-911-cabriolet-03.png"),
+      asset("cars/porsche-911-cabriolet-04.png"),
     ],
-    highlights: ["Hybrid Ferrari performance", "Compact exotic profile", "Availability by request"],
+    details: [
+      { label: "Engine", value: "3.0L twin-turbocharged flat-six" },
+      { label: "Transmission", value: "8-speed PDK automatic" },
+      { label: "Drivetrain", value: "Rear-wheel drive" },
+      { label: "Passengers", value: "4" },
+      { label: "Power", value: "379 hp" },
+      { label: "Roof", value: "Power convertible soft top" },
+      { label: "Best for", value: "Coastal drives, date nights, weekend escapes" },
+    ],
+    highlights: ["Silver cabriolet", "Open-air grand touring", "Availability by request"],
   },
   {
     name: "Maserati MC20",
@@ -156,8 +162,8 @@ const fleet: FleetCar[] = [
 const occasions = [
   ["Weddings", "Couture arrivals, getaway moments, and full-day coordination tailored to the ceremony.", "Rolls-Royce, Mercedes-AMG, Lamborghini"],
   ["Corporate travel", "Quiet movement for executives, visiting partners, and client-facing pickups.", "Executive SUVs, exotic GTs"],
-  ["Weekend escapes", "Hill Country, the coast or just a Saturday - your weekend, upgraded.", "Urus, MC20, Ferrari 296"],
-  ["Birthdays & anniversaries", "Mark the milestone with a vehicle worth remembering.", "Ferrari, Lamborghini, Maserati"],
+  ["Weekend escapes", "Hill Country, the coast or just a Saturday - your weekend, upgraded.", "Urus, MC20, Porsche 911"],
+  ["Birthdays & anniversaries", "Mark the milestone with a vehicle worth remembering.", "Porsche, Lamborghini, Maserati"],
   ["Photo & video productions", "Curated vehicles delivered to set, with flexible hold windows.", "Full fleet available"],
   ["Hotel stays & airport arrivals", "Meet your vehicle at the lobby, FBO or terminal.", "Full fleet available"],
 ];
@@ -429,7 +435,7 @@ function Testimonials() {
   const quotes = [
     ["The Urus arrived at the hotel exactly as promised. Discreet, immaculate, handed off in under a minute. We will use Pascucci again.", "M. Lawson", "Executive client"],
     ["They delivered the G63 to the chapel, waited quietly, then brought it back at midnight. Felt like a private service, not a rental.", "A. & J. Reyes", "Wedding client"],
-    ["Picked us up at the terminal in the Ferrari. The weekend started the moment we stepped outside.", "D. Patel", "Weekend escape"],
+    ["Picked us up at the terminal in the Porsche. The weekend started the moment we stepped outside.", "D. Patel", "Weekend escape"],
   ];
 
   return (
