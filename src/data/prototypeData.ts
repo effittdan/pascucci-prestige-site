@@ -162,6 +162,129 @@ export const vehicles = [
   { name: "Range Rover Autobiography", plate: "PP-RR", status: "Ready", next: "Delivery 4:00 PM", revenue: "$2,150", readiness: 96 },
 ];
 
+export type FleetManagerVehicle = {
+  id: string;
+  name: string;
+  category: string;
+  status: "Published" | "Draft" | "Needs media" | "Hidden";
+  displaySlot: string;
+  dailyRate: string;
+  hourlyRate: string;
+  passengers: string;
+  drivetrain: string;
+  transmission: string;
+  engine: string;
+  power: string;
+  heroImage: string;
+  photoCount: number;
+  maxPhotos: number;
+  requiredShots: string[];
+  missingShots: string[];
+  highlights: string[];
+  publicLine: string;
+  nextAction: string;
+};
+
+export const fleetManagerVehicles: FleetManagerVehicle[] = [
+  {
+    id: "fleet-mclaren-gt",
+    name: "McLaren GT",
+    category: "Grand Tourer",
+    status: "Published",
+    displaySlot: "Featured 01",
+    dailyRate: "$1,099",
+    hourlyRate: "$250",
+    passengers: "2",
+    drivetrain: "Rear-wheel drive",
+    transmission: "7-speed dual-clutch",
+    engine: "4.0L twin-turbocharged V8",
+    power: "612 hp",
+    heroImage: "/concierge-assets/cars/mclaren-gt-01.png",
+    photoCount: 4,
+    maxPhotos: 12,
+    requiredShots: ["Front three-quarter", "Side profile", "Rear three-quarter", "Wide exterior"],
+    missingShots: ["Cockpit", "Luggage area", "Wheel detail", "Feature close-up"],
+    highlights: ["Grand touring comfort", "Low-slung supercar profile", "Concierge delivery"],
+    publicLine: "Supercar presence with long-distance composure.",
+    nextAction: "Add interior and feature photography",
+  },
+  {
+    id: "fleet-lamborghini-urus",
+    name: "Lamborghini Urus",
+    category: "Luxury SUV",
+    status: "Published",
+    displaySlot: "Featured 02",
+    dailyRate: "$1,199",
+    hourlyRate: "$300",
+    passengers: "5",
+    drivetrain: "All-wheel drive",
+    transmission: "8-speed automatic",
+    engine: "4.0L twin-turbocharged V8",
+    power: "641 hp",
+    heroImage: "/concierge-assets/cars/lamborghini-urus-orange-01.png",
+    photoCount: 4,
+    maxPhotos: 12,
+    requiredShots: ["Front three-quarter", "Side profile", "Rear wide", "Rear detail"],
+    missingShots: ["Front cabin", "Rear seats", "Cargo area", "Drive-mode detail"],
+    highlights: ["Orange exterior", "Super-SUV performance", "Flexible delivery"],
+    publicLine: "Supercar soul. SUV freedom.",
+    nextAction: "Capture cabin and rear-seat story",
+  },
+  {
+    id: "fleet-porsche-911-cabriolet",
+    name: "Porsche 911 Cabriolet",
+    category: "Convertible",
+    status: "Published",
+    displaySlot: "Featured 03",
+    dailyRate: "$799",
+    hourlyRate: "$160",
+    passengers: "4",
+    drivetrain: "Rear-wheel drive",
+    transmission: "8-speed PDK",
+    engine: "3.0L twin-turbocharged flat-six",
+    power: "379 hp",
+    heroImage: "/concierge-assets/cars/porsche-911-cabriolet-01.png",
+    photoCount: 4,
+    maxPhotos: 12,
+    requiredShots: ["Front top-down", "Side top-down", "Rear top-down", "Wide lifestyle"],
+    missingShots: ["Roof operation", "Front seats", "Rear seats", "Wheel detail"],
+    highlights: ["Silver cabriolet", "Open-air grand touring", "Availability by request"],
+    publicLine: "Open-air precision with everyday polish.",
+    nextAction: "Add roof and interior feature set",
+  },
+  {
+    id: "fleet-maserati-mc20",
+    name: "Maserati MC20",
+    category: "Supercar",
+    status: "Needs media",
+    displaySlot: "Standard",
+    dailyRate: "Request",
+    hourlyRate: "Request",
+    passengers: "2",
+    drivetrain: "Rear-wheel drive",
+    transmission: "8-speed dual-clutch",
+    engine: "3.0L twin-turbo Nettuno V6",
+    power: "621 hp",
+    heroImage: "/concierge-assets/cars/maserati-mc20.png",
+    photoCount: 1,
+    maxPhotos: 12,
+    requiredShots: ["Primary exterior"],
+    missingShots: ["Side profile", "Rear detail", "Cockpit", "Butterfly doors", "Wheel detail"],
+    highlights: ["Italian supercar feel", "Butterfly doors", "Low-production presence"],
+    publicLine: "Sculpted speed with grand touring poise.",
+    nextAction: "Complete launch gallery before promotion",
+  },
+];
+
+export const fleetManagerBlueprint = [
+  "Upload up to 12 public photos per vehicle",
+  "Choose one card/hero image",
+  "Tag exterior, interior, detail, and feature shots",
+  "Set daily and hourly pricing",
+  "Publish, draft, hide, or request more media",
+  "Feed the public site and future reservation calendar from one vehicle record",
+];
+
 export const reservations = [
   { id: "PP-R-2026-00042", customer: "Avery Stone", vehicle: "Lamborghini Urus", status: "Pending approval", total: "$4,850", dates: "Jun 8-11", issue: "Document blocked" },
   { id: "PP-R-2026-00043", customer: "Bennett Group", vehicle: "Range Rover Autobiography", status: "Confirmed", total: "$2,150", dates: "Jun 8-9", issue: "Ready" },

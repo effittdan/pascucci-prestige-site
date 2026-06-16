@@ -24,6 +24,8 @@ import {
   attentionQueue,
   auditEvents,
   comparisonPairs,
+  fleetManagerBlueprint,
+  fleetManagerVehicles,
   inspectionFoundation,
   inspectionMetrics,
   inspectionQueue,
@@ -553,26 +555,145 @@ function ReservationList() {
 }
 
 function FleetTable() {
+  const activeVehicle = fleetManagerVehicles[0];
+  const publishedCount = fleetManagerVehicles.filter((vehicle) => vehicle.status === "Published").length;
+  const totalPhotos = fleetManagerVehicles.reduce((sum, vehicle) => sum + vehicle.photoCount, 0);
+  const totalCapacity = fleetManagerVehicles.reduce((sum, vehicle) => sum + vehicle.maxPhotos, 0);
+
   return (
-    <section className="panel">
-      <PanelHeader title="Fleet Status" action="Add vehicle" />
-      <div className="vehicle-list expanded">
-        {vehicles.map((vehicle) => (
-          <article className="vehicle-row" key={vehicle.name}>
+    <section className="fleet-manager">
+      <div className="fleet-manager-hero">
+        <div>
+          <span className="eyebrow">Fleet Manager</span>
+          <h2>One controlled vehicle record for the website, reservations, and operations.</h2>
+          <p>
+            This workspace is the staging point for new vehicles: upload media, define pricing,
+            complete specs, and decide when a vehicle is safe to publish.
+          </p>
+        </div>
+        <div className="fleet-manager-actions">
+          <button className="primary-action">
+            <Plus size={17} />
+            <span>Add vehicle</span>
+          </button>
+          <button className="secondary-action">
+            <Image size={17} />
+            <span>Upload photos</span>
+          </button>
+        </div>
+      </div>
+
+      <div className="fleet-manager-metrics" aria-label="Fleet manager summary">
+        <article>
+          <span>Published</span>
+          <strong>{publishedCount}</strong>
+          <p>{fleetManagerVehicles.length} vehicle records staged</p>
+        </article>
+        <article>
+          <span>Photo library</span>
+          <strong>{totalPhotos}/{totalCapacity}</strong>
+          <p>Up to 12 public photos per vehicle</p>
+        </article>
+        <article>
+          <span>Media gaps</span>
+          <strong>{fleetManagerVehicles.reduce((sum, vehicle) => sum + vehicle.missingShots.length, 0)}</strong>
+          <p>Interior, detail, and feature shots to capture</p>
+        </article>
+      </div>
+
+      <div className="fleet-manager-grid">
+        <section className="panel fleet-record-panel">
+          <PanelHeader title="Vehicle Records" action="Draft queue" />
+          <div className="fleet-record-list">
+            {fleetManagerVehicles.map((vehicle) => (
+              <article className="fleet-record-card" key={vehicle.id}>
+                <img src={vehicle.heroImage} alt="" />
+                <div>
+                  <span className="mini-label">{vehicle.category} · {vehicle.displaySlot}</span>
+                  <h3>{vehicle.name}</h3>
+                  <p>{vehicle.publicLine}</p>
+                  <div className="fleet-record-tags">
+                    <StatusPill label={vehicle.status} />
+                    <span>{vehicle.dailyRate} / day</span>
+                    <span>{vehicle.hourlyRate} / hour</span>
+                  </div>
+                </div>
+                <div className="photo-capacity">
+                  <span>{vehicle.photoCount} of {vehicle.maxPhotos} photos</span>
+                  <div>
+                    <i style={{ width: `${(vehicle.photoCount / vehicle.maxPhotos) * 100}%` }} />
+                  </div>
+                  <small>{vehicle.nextAction}</small>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="panel fleet-editor-panel">
+          <PanelHeader title="Editor Preview" action="Autosaved draft" />
+          <div className="fleet-editor-preview">
+            <img src={activeVehicle.heroImage} alt="" />
             <div>
-              <strong>{vehicle.name}</strong>
-              <span>{vehicle.plate} · {vehicle.next}</span>
+              <span className="mini-label">{activeVehicle.category}</span>
+              <h3>{activeVehicle.name}</h3>
+              <p>{activeVehicle.publicLine}</p>
             </div>
-            <StatusPill label={vehicle.status} />
-            <div className="progress-wrap">
-              <span>{vehicle.readiness}% ready</span>
-              <div>
-                <i style={{ width: `${vehicle.readiness}%` }} />
-              </div>
-            </div>
-            <strong>{vehicle.revenue}</strong>
-          </article>
-        ))}
+          </div>
+          <div className="fleet-editor-fields">
+            {[
+              ["Daily rate", activeVehicle.dailyRate],
+              ["Hourly rate", activeVehicle.hourlyRate],
+              ["Passengers", activeVehicle.passengers],
+              ["Drivetrain", activeVehicle.drivetrain],
+              ["Transmission", activeVehicle.transmission],
+              ["Engine", activeVehicle.engine],
+              ["Power", activeVehicle.power],
+            ].map(([label, value]) => (
+              <article key={label}>
+                <span>{label}</span>
+                <strong>{value}</strong>
+              </article>
+            ))}
+          </div>
+          <div className="fleet-highlight-editor">
+            <span className="mini-label">Public highlights</span>
+            {activeVehicle.highlights.map((highlight) => (
+              <p key={highlight}><Check size={14} /> {highlight}</p>
+            ))}
+          </div>
+        </section>
+
+        <section className="panel media-plan-panel">
+          <PanelHeader title="12-Photo Media Plan" action="Manage gallery" />
+          <div className="media-slot-grid">
+            {Array.from({ length: activeVehicle.maxPhotos }, (_, index) => {
+              const filled = index < activeVehicle.photoCount;
+              const label = activeVehicle.requiredShots[index] ?? activeVehicle.missingShots[index - activeVehicle.requiredShots.length] ?? "Optional feature shot";
+
+              return (
+                <article className={cx("media-slot", filled && "filled")} key={`${activeVehicle.id}-${index}`}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  {filled ? <img src={activeVehicle.heroImage} alt="" /> : <Image size={18} />}
+                  <strong>{label}</strong>
+                  <small>{filled ? "Ready" : "Needed"}</small>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="panel fleet-blueprint-panel">
+          <PanelHeader title="Backend Blueprint" action="Next build step" />
+          <div className="foundation-list">
+            {fleetManagerBlueprint.map((item) => (
+              <article key={item}>
+                <GaugeCircle size={17} />
+                <span>{item}</span>
+              </article>
+            ))}
+          </div>
+        </section>
       </div>
     </section>
   );
