@@ -285,6 +285,89 @@ export const fleetManagerBlueprint = [
   "Feed the public site and future reservation calendar from one vehicle record",
 ];
 
+export type ClientIntakeStage = "Lead" | "Profile started" | "Documents needed" | "Payment ready" | "Approved";
+
+export type ClientIntakeProfile = {
+  id: string;
+  name: string;
+  stage: ClientIntakeStage;
+  source: string;
+  preferredVehicle: string;
+  tripWindow: string;
+  profileCompleteness: number;
+  paymentStatus: string;
+  stripeCustomer: string;
+  savedPayment: string;
+  nextAction: string;
+};
+
+export const clientIntakeProfiles: ClientIntakeProfile[] = [
+  {
+    id: "CLI-2026-0188",
+    name: "Maya Ellison",
+    stage: "Profile started",
+    source: "iPad showroom intake",
+    preferredVehicle: "Porsche 911 Cabriolet",
+    tripWindow: "Weekend rental",
+    profileCompleteness: 62,
+    paymentStatus: "Setup link pending",
+    stripeCustomer: "Will create on submit",
+    savedPayment: "None saved",
+    nextAction: "Collect license and payment preference",
+  },
+  {
+    id: "CLI-2026-0184",
+    name: "Julian Reed",
+    stage: "Payment ready",
+    source: "Concierge referral",
+    preferredVehicle: "Lamborghini Urus",
+    tripWindow: "Jun 22-24",
+    profileCompleteness: 86,
+    paymentStatus: "Payment method saved",
+    stripeCustomer: "cus_ready_for_reuse",
+    savedPayment: "Visa ending in 4242",
+    nextAction: "Send approved reservation payment request",
+  },
+  {
+    id: "CLI-2026-0179",
+    name: "Bennett Group",
+    stage: "Documents needed",
+    source: "Website inquiry",
+    preferredVehicle: "McLaren GT",
+    tripWindow: "Corporate arrival",
+    profileCompleteness: 48,
+    paymentStatus: "No payment preference",
+    stripeCustomer: "Not created",
+    savedPayment: "None saved",
+    nextAction: "Request driver roster and insurance",
+  },
+];
+
+export const intakeProfileRequirements = [
+  "Contact details and preferred communication",
+  "Primary renter identity",
+  "Driver license and insurance uploads",
+  "Rental purpose, location, and vehicle interest",
+  "Payment consent and Stripe customer setup",
+  "Approval status for future rentals",
+];
+
+export const intakePaymentBlueprint = [
+  "Create or reuse a Stripe Customer for each approved renter",
+  "Use Stripe-hosted setup or Checkout save mode to collect payment details",
+  "Store only Stripe IDs, brand, last four, consent timestamp, and status",
+  "Use saved payment method for future approved reservation requests",
+  "Keep deposit/authorization logic separate from final rental charges",
+];
+
+export const ipadIntakeSteps = [
+  { label: "Profile", detail: "Name, phone, email, address, and preferred contact." },
+  { label: "Rental", detail: "Vehicle interest, date window, delivery location, and occasion." },
+  { label: "Documents", detail: "License, insurance, additional drivers, and approval notes." },
+  { label: "Payment", detail: "Stripe setup link or hosted payment setup with explicit consent." },
+  { label: "Review", detail: "Concierge review before profile becomes approved for reservations." },
+];
+
 export const reservations = [
   { id: "PP-R-2026-00042", customer: "Avery Stone", vehicle: "Lamborghini Urus", status: "Pending approval", total: "$4,850", dates: "Jun 8-11", issue: "Document blocked" },
   { id: "PP-R-2026-00043", customer: "Bennett Group", vehicle: "Range Rover Autobiography", status: "Confirmed", total: "$2,150", dates: "Jun 8-9", issue: "Ready" },

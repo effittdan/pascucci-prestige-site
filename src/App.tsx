@@ -23,13 +23,17 @@ import logoUrl from "./assets/pp-logo-grad.png";
 import {
   attentionQueue,
   auditEvents,
+  clientIntakeProfiles,
   comparisonPairs,
   fleetManagerBlueprint,
   fleetManagerVehicles,
+  intakePaymentBlueprint,
+  intakeProfileRequirements,
   inspectionFoundation,
   inspectionMetrics,
   inspectionQueue,
   inspectionZones,
+  ipadIntakeSteps,
   metricCards,
   ModuleId,
   navItems,
@@ -301,6 +305,10 @@ function ModuleView({ moduleId, role }: { moduleId: ModuleId; role: Role }) {
         right={<FutureFoundation role={role} />}
       />
     );
+  }
+
+  if (moduleId === "customers" || moduleId === "leads") {
+    return <ClientIntakeCommandCenter moduleId={moduleId} />;
   }
 
   if (moduleId === "operations" || moduleId === "inspections") {
@@ -718,6 +726,142 @@ function TaskBoard({ inspection }: { inspection: boolean }) {
               ))}
           </div>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function ClientIntakeCommandCenter({ moduleId }: { moduleId: "customers" | "leads" }) {
+  const activeProfile = clientIntakeProfiles[0];
+  const paymentReadyCount = clientIntakeProfiles.filter((profile) => profile.stage === "Payment ready" || profile.stage === "Approved").length;
+  const averageCompleteness = Math.round(
+    clientIntakeProfiles.reduce((sum, profile) => sum + profile.profileCompleteness, 0) / clientIntakeProfiles.length,
+  );
+
+  return (
+    <section className="client-intake">
+      <div className="client-intake-hero">
+        <div>
+          <span className="eyebrow">{moduleId === "leads" ? "Lead Intake" : "Client Profiles"}</span>
+          <h2>Capture renters once, approve them carefully, and reuse the profile for future rentals.</h2>
+          <p>
+            The MVP creates a clean path for website inquiries, concierge entries, and an iPad intake experience.
+            Payment details are saved through Stripe, while the command center stores only safe references.
+          </p>
+        </div>
+        <div className="client-intake-actions">
+          <button className="primary-action">
+            <Plus size={17} />
+            <span>Start intake</span>
+          </button>
+          <button className="secondary-action">
+            <Shield size={17} />
+            <span>Send setup link</span>
+          </button>
+        </div>
+      </div>
+
+      <div className="client-intake-metrics" aria-label="Client intake summary">
+        <article>
+          <span>Profiles</span>
+          <strong>{clientIntakeProfiles.length}</strong>
+          <p>Active renter records in review</p>
+        </article>
+        <article>
+          <span>Payment ready</span>
+          <strong>{paymentReadyCount}</strong>
+          <p>Reusable Stripe payment references on file</p>
+        </article>
+        <article>
+          <span>Average readiness</span>
+          <strong>{averageCompleteness}%</strong>
+          <p>Profile, documents, consent, and payment setup</p>
+        </article>
+      </div>
+
+      <div className="client-intake-grid">
+        <section className="panel intake-profile-panel">
+          <PanelHeader title="Intake Queue" action="Filter" />
+          <div className="intake-profile-list">
+            {clientIntakeProfiles.map((profile) => (
+              <article className="intake-profile-card" key={profile.id}>
+                <div>
+                  <span className="mini-label">{profile.id} · {profile.source}</span>
+                  <h3>{profile.name}</h3>
+                  <p>{profile.preferredVehicle} · {profile.tripWindow}</p>
+                  <div className="intake-profile-tags">
+                    <StatusPill label={profile.stage} />
+                    <span>{profile.paymentStatus}</span>
+                  </div>
+                </div>
+                <div className="profile-completeness">
+                  <span>{profile.profileCompleteness}% complete</span>
+                  <div>
+                    <i style={{ width: `${profile.profileCompleteness}%` }} />
+                  </div>
+                  <small>{profile.nextAction}</small>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="panel intake-editor-panel">
+          <PanelHeader title="Profile + Payment Preference" action="Autosaved draft" />
+          <div className="intake-editor-summary">
+            <span className="mini-label">{activeProfile.id}</span>
+            <h3>{activeProfile.name}</h3>
+            <p>{activeProfile.preferredVehicle} · {activeProfile.tripWindow}</p>
+          </div>
+          <div className="payment-reference-card">
+            <Shield size={20} />
+            <div>
+              <span>Payment preference</span>
+              <strong>{activeProfile.savedPayment}</strong>
+              <p>{activeProfile.stripeCustomer} · {activeProfile.paymentStatus}</p>
+            </div>
+          </div>
+          <div className="intake-requirement-list">
+            {intakeProfileRequirements.map((requirement) => (
+              <article key={requirement}>
+                <Check size={14} />
+                <span>{requirement}</span>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="panel ipad-intake-panel">
+          <PanelHeader title="iPad Intake Flow" action="Kiosk mode" />
+          <div className="ipad-frame">
+            <span className="mini-label">Renter-facing mode</span>
+            <h3>Welcome to Pascucci Prestige</h3>
+            <p>Private intake for approved rentals. A concierge reviews every profile before reservation payment.</p>
+            <div className="ipad-step-list">
+              {ipadIntakeSteps.map((step, index) => (
+                <article key={step.label}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <strong>{step.label}</strong>
+                    <p>{step.detail}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="panel payment-blueprint-panel">
+          <PanelHeader title="Stripe MVP Blueprint" action="Server step" />
+          <div className="foundation-list">
+            {intakePaymentBlueprint.map((item) => (
+              <article key={item}>
+                <GaugeCircle size={17} />
+                <span>{item}</span>
+              </article>
+            ))}
+          </div>
+        </section>
       </div>
     </section>
   );
