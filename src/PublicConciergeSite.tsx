@@ -5,6 +5,7 @@ const asset = (path: string) => `/concierge-assets/${path}`;
 const contactEmail = "jerry@pascucciprestigerentals.com";
 const reservationEmailHref = `mailto:${contactEmail}?subject=Pascucci%20Prestige%20Reservation%20Request`;
 const conciergeEmailHref = `mailto:${contactEmail}?subject=Pascucci%20Prestige%20Concierge%20Inquiry`;
+const membershipEmailHref = `mailto:${contactEmail}?subject=Prestige%20Premier%20Membership%20Inquiry`;
 
 type RouteKey =
   | "home"
@@ -58,12 +59,16 @@ const fleet: FleetCar[] = [
     line: "Supercar presence with long-distance composure.",
     price: "$1,099 / day or $250 / hour",
     specs: "2 passengers - RWD - delivery available",
-    image: asset("cars/mclaren-gt-01.png"),
+    image: asset("cars/mclaren-gt-real-01.jpg"),
     gallery: [
-      asset("cars/mclaren-gt-01.png"),
-      asset("cars/mclaren-gt-02.png"),
-      asset("cars/mclaren-gt-03.png"),
-      asset("cars/mclaren-gt-04.png"),
+      asset("cars/mclaren-gt-real-01.jpg"),
+      asset("cars/mclaren-gt-real-02.jpg"),
+      asset("cars/mclaren-gt-real-03.jpg"),
+      asset("cars/mclaren-gt-real-04.jpg"),
+      asset("cars/mclaren-gt-real-05.jpg"),
+      asset("cars/mclaren-gt-real-06.jpg"),
+      asset("cars/mclaren-gt-real-08.jpg"),
+      asset("cars/mclaren-gt-real-12.jpg"),
     ],
     details: [
       { label: "Engine", value: "4.0L twin-turbocharged V8" },
@@ -82,12 +87,16 @@ const fleet: FleetCar[] = [
     line: "Supercar soul. SUV freedom.",
     price: "$1,199 / day or $300 / hour",
     specs: "5 passengers - AWD - 641 hp",
-    image: asset("cars/lamborghini-urus-orange-01.png"),
+    image: asset("cars/lamborghini-urus-real-01.jpg"),
     gallery: [
-      asset("cars/lamborghini-urus-orange-01.png"),
-      asset("cars/lamborghini-urus-orange-02.png"),
-      asset("cars/lamborghini-urus-orange-03.png"),
-      asset("cars/lamborghini-urus-orange-04.png"),
+      asset("cars/lamborghini-urus-real-01.jpg"),
+      asset("cars/lamborghini-urus-real-04.jpg"),
+      asset("cars/lamborghini-urus-real-03.jpg"),
+      asset("cars/lamborghini-urus-real-05.jpg"),
+      asset("cars/lamborghini-urus-real-06.jpg"),
+      asset("cars/lamborghini-urus-real-07.jpg"),
+      asset("cars/lamborghini-urus-real-08.jpg"),
+      asset("cars/lamborghini-urus-real-09.jpg"),
     ],
     details: [
       { label: "Engine", value: "4.0L twin-turbocharged V8" },
@@ -106,12 +115,16 @@ const fleet: FleetCar[] = [
     line: "Open-air precision with everyday polish.",
     price: "$799 / day or $160 / hour",
     specs: "4 passengers - RWD - open-top touring",
-    image: asset("cars/porsche-911-cabriolet-01.png"),
+    image: asset("cars/porsche-911-cabriolet-real-01.jpg"),
     gallery: [
-      asset("cars/porsche-911-cabriolet-01.png"),
-      asset("cars/porsche-911-cabriolet-02.png"),
-      asset("cars/porsche-911-cabriolet-03.png"),
-      asset("cars/porsche-911-cabriolet-04.png"),
+      asset("cars/porsche-911-cabriolet-real-01.jpg"),
+      asset("cars/porsche-911-cabriolet-real-04.jpg"),
+      asset("cars/porsche-911-cabriolet-real-03.jpg"),
+      asset("cars/porsche-911-cabriolet-real-02.jpg"),
+      asset("cars/porsche-911-cabriolet-real-05.jpg"),
+      asset("cars/porsche-911-cabriolet-real-06.jpg"),
+      asset("cars/porsche-911-cabriolet-real-07.jpg"),
+      asset("cars/porsche-911-cabriolet-real-08.jpg"),
     ],
     details: [
       { label: "Engine", value: "3.0L twin-turbocharged flat-six" },
@@ -125,51 +138,15 @@ const fleet: FleetCar[] = [
     ],
     highlights: ["Silver cabriolet", "Open-air grand touring", "Availability by request"],
   },
-  {
-    name: "Maserati MC20",
-    category: "Supercar",
-    line: "Sculpted speed with grand touring poise.",
-    price: "Request pricing",
-    specs: "2 passengers - RWD - 621 hp",
-    image: asset("cars/maserati-mc20.png"),
-    gallery: [asset("cars/maserati-mc20.png")],
-    details: [
-      { label: "Engine", value: "3.0L twin-turbo Nettuno V6" },
-      { label: "Transmission", value: "8-speed dual-clutch automatic" },
-      { label: "Drivetrain", value: "Rear-wheel drive" },
-      { label: "Passengers", value: "2" },
-      { label: "Power", value: "621 hp" },
-      { label: "Best for", value: "Supercar experiences and special events" },
-    ],
-    highlights: ["Italian supercar feel", "Butterfly doors", "Low-production presence"],
-  },
-  {
-    name: "Mercedes-AMG G63",
-    category: "Executive SUV",
-    line: "Iconic presence, effortless arrival.",
-    price: "From $1,295 / day",
-    specs: "5 passengers - AWD - delivery available",
-    image: asset("cars/mercedes-g63.png"),
-    gallery: [asset("cars/mercedes-g63.png")],
-    details: [
-      { label: "Engine", value: "4.0L biturbo V8" },
-      { label: "Transmission", value: "9-speed automatic" },
-      { label: "Drivetrain", value: "All-wheel drive" },
-      { label: "Passengers", value: "5" },
-      { label: "Power", value: "577 hp" },
-      { label: "Best for", value: "Executive movement, families, hotel arrivals" },
-    ],
-    highlights: ["Iconic G-Class stance", "Luxury SUV practicality", "Concierge delivery available"],
-  },
 ];
 
 const occasions = [
-  ["Weddings", "Couture arrivals, getaway moments, and full-day coordination tailored to the ceremony.", "Rolls-Royce, Mercedes-AMG, Lamborghini"],
-  ["Corporate travel", "Quiet movement for executives, visiting partners, and client-facing pickups.", "Executive SUVs, exotic GTs"],
-  ["Weekend escapes", "Hill Country, the coast or just a Saturday - your weekend, upgraded.", "Urus, MC20, Porsche 911"],
-  ["Birthdays & anniversaries", "Mark the milestone with a vehicle worth remembering.", "Porsche, Lamborghini, Maserati"],
-  ["Photo & video productions", "Curated vehicles delivered to set, with flexible hold windows.", "Full fleet available"],
-  ["Hotel stays & airport arrivals", "Meet your vehicle at the lobby, FBO or terminal.", "Full fleet available"],
+  ["Weddings", "Couture arrivals, getaway moments, and full-day coordination tailored to the ceremony.", "McLaren GT, Lamborghini Urus, Porsche 911"],
+  ["Corporate travel", "Quiet movement for executives, visiting partners, and client-facing pickups.", "McLaren GT, Lamborghini Urus, Porsche 911"],
+  ["Weekend escapes", "Hill Country, the coast or just a Saturday - your weekend, upgraded.", "Lamborghini Urus, McLaren GT, Porsche 911"],
+  ["Birthdays & anniversaries", "Mark the milestone with a vehicle worth remembering.", "Porsche 911, Lamborghini Urus, McLaren GT"],
+  ["Photo & video productions", "Curated vehicles delivered to set, with flexible hold windows.", "Our three-vehicle collection"],
+  ["Hotel stays & airport arrivals", "Meet your vehicle at the lobby, FBO or terminal.", "Our three-vehicle collection"],
 ];
 
 const faqs = [
@@ -255,7 +232,7 @@ function HomePage({ onSelectCar }: { onSelectCar: (car: FleetCar) => void }) {
   return (
     <main>
       <section className="public-hero">
-        <img src={asset("hero-mclaren-gt.png")} alt="White McLaren GT parked at a luxury hillside villa at dusk" />
+        <img src={asset("cars/mclaren-gt-real-01.jpg")} alt="White McLaren GT photographed in San Antonio" />
         <div className="hero-shade" />
         <div className="hero-content">
           <span className="public-kicker">Luxury auto concierge - San Antonio, Texas</span>
@@ -272,6 +249,7 @@ function HomePage({ onSelectCar }: { onSelectCar: (car: FleetCar) => void }) {
         <span className="scroll-cue">Scroll</span>
       </section>
       <FleetPreview onSelectCar={onSelectCar} />
+      <MembershipPreview />
       <ConciergePromise />
       <ProcessPreview />
       <OccasionPreview />
@@ -279,6 +257,50 @@ function HomePage({ onSelectCar }: { onSelectCar: (car: FleetCar) => void }) {
       <Testimonials />
       <ReserveBand />
     </main>
+  );
+}
+
+function MembershipPreview() {
+  return (
+    <section className="membership-preview" aria-labelledby="membership-title">
+      <div className="membership-copy">
+        <span className="public-kicker">VIP membership</span>
+        <p className="membership-edition">Prestige Premier</p>
+        <h2 id="membership-title">A standing invitation to drive differently.</h2>
+        <p className="membership-intro">
+          Reserved for clients who want extraordinary vehicles to be part of the month—not just the occasion.
+        </p>
+        <div className="membership-benefits">
+          <article>
+            <strong>5</strong>
+            <span>Rental days each month</span>
+          </article>
+          <article>
+            <strong>1,000</strong>
+            <span>Miles included monthly</span>
+          </article>
+          <article>
+            <strong>VIP</strong>
+            <span>Concierge-led planning</span>
+          </article>
+        </div>
+        <ul>
+          <li><Check size={17} />Choose from eligible vehicles in the Pascucci Prestige fleet</li>
+          <li><Check size={17} />Coordinate your monthly drives directly with a concierge</li>
+          <li><Check size={17} />Enjoy one clear monthly membership rate</li>
+        </ul>
+        <div className="membership-action">
+          <a className="button gold" href={membershipEmailHref}>Request membership details <ArrowRight size={16} /></a>
+          <small>Vehicle availability and standard rental requirements apply.</small>
+        </div>
+      </div>
+      <div className="membership-rate">
+        <span>Monthly membership</span>
+        <strong><sup>$</sup>4,000</strong>
+        <p>Five days. One thousand miles. Your next drive already within reach.</p>
+        <div aria-hidden="true">PP</div>
+      </div>
+    </section>
   );
 }
 
@@ -364,7 +386,7 @@ function ConciergePromise() {
   return (
     <section className="split-promise">
       <div className="promise-photo">
-        <img src={asset("cars/mercedes-g63.png")} alt="Mercedes-AMG G63 prepared for concierge delivery" />
+        <img src={asset("cars/lamborghini-urus-real-06.jpg")} alt="Lamborghini Urus prepared for concierge delivery" />
       </div>
       <div className="promise-copy">
         <span className="public-kicker">The concierge promise</span>
@@ -438,7 +460,7 @@ function SanAntonioBand() {
 function Testimonials() {
   const quotes = [
     ["The Urus arrived at the hotel exactly as promised. Discreet, immaculate, handed off in under a minute. We will use Pascucci again.", "M. Lawson", "Executive client"],
-    ["They delivered the G63 to the chapel, waited quietly, then brought it back at midnight. Felt like a private service, not a rental.", "A. & J. Reyes", "Wedding client"],
+    ["They delivered the McLaren to the chapel, waited quietly, then brought it back at midnight. Felt like a private service, not a rental.", "A. & J. Reyes", "Wedding client"],
     ["Picked us up at the terminal in the Porsche. The weekend started the moment we stepped outside.", "D. Patel", "Weekend escape"],
   ];
 

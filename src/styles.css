@@ -691,7 +691,7 @@
   padding: clamp(72px, 12vw, 160px) clamp(18px, 7vw, 104px);
   background:
     linear-gradient(90deg, rgba(9, 10, 11, 0.82), rgba(9, 10, 11, 0.44)),
-    url("/concierge-assets/cars/maserati-mc20.png") center / cover;
+    url("/concierge-assets/cars/mclaren-gt-real-04.jpg") center / cover;
 }
 
 .city-band div {
@@ -756,7 +756,7 @@
   padding: clamp(88px, 12vw, 164px) clamp(18px, 6vw, 90px) clamp(50px, 7vw, 88px);
   background:
     linear-gradient(90deg, rgba(9, 10, 11, 0.86), rgba(9, 10, 11, 0.42)),
-    url("/concierge-assets/hero-mclaren-gt.png") center / cover;
+    url("/concierge-assets/cars/mclaren-gt-real-01.jpg") center / cover;
 }
 
 .page-hero h1,
@@ -2230,6 +2230,368 @@ button {
   border-color: var(--pp-border-dark);
 }
 
+.square-finance {
+  display: grid;
+  gap: 18px;
+}
+
+.square-finance-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(250px, 320px);
+  gap: 24px;
+  align-items: end;
+  padding: clamp(22px, 3vw, 34px);
+  color: var(--pp-paper);
+  background:
+    linear-gradient(120deg, rgba(9, 10, 11, 0.97), rgba(36, 34, 31, 0.9) 68%, rgba(101, 117, 107, 0.34)),
+    var(--pp-obsidian);
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+}
+
+.square-finance-hero h2 {
+  max-width: 900px;
+  margin: 9px 0 12px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 4.2rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.square-finance-hero > div > p {
+  max-width: 760px;
+  margin: 0;
+  color: rgba(247, 245, 240, 0.74);
+  line-height: 1.5;
+}
+
+.square-status-card {
+  padding: 17px;
+  background: rgba(247, 245, 240, 0.08);
+  border: 1px solid var(--pp-border-dark);
+  border-radius: 6px;
+}
+
+.square-status-card > span {
+  color: var(--pp-gold);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.square-status-card > strong {
+  display: block;
+  margin: 7px 0 4px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+.square-status-card p {
+  margin: 0 0 12px;
+  color: rgba(247, 245, 240, 0.66);
+  font-size: 0.84rem;
+}
+
+.square-finance-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.56fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.payment-section {
+  display: grid;
+  gap: 13px;
+  padding: 17px 0;
+  border-bottom: 1px solid rgba(9, 10, 11, 0.09);
+}
+
+.payment-section:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.payment-section-heading {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.payment-section-heading svg {
+  color: var(--pp-gold-dark);
+}
+
+.payment-section-heading strong {
+  display: block;
+  color: var(--pp-ink);
+  font-size: 0.95rem;
+}
+
+.payment-section-heading span {
+  display: block;
+  margin-top: 3px;
+  color: #6c6f73;
+  font-size: 0.82rem;
+}
+
+.money-input {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: center;
+  overflow: hidden;
+  min-height: 48px;
+  background: rgba(241, 238, 231, 0.6);
+  border: 1px solid rgba(9, 10, 11, 0.14);
+  border-radius: 5px;
+}
+
+.money-input > span {
+  display: grid;
+  height: 100%;
+  place-items: center;
+  color: #5e6165;
+  background: rgba(9, 10, 11, 0.05);
+  font-weight: 800;
+}
+
+.money-input input {
+  width: 100%;
+  height: 100%;
+  padding: 0 13px;
+  color: var(--pp-ink);
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  font-weight: 800;
+}
+
+.choice-grid {
+  display: grid;
+  gap: 9px;
+}
+
+.choice-grid.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.choice-grid.three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.choice-card {
+  display: grid;
+  gap: 5px;
+  min-height: 92px;
+  padding: 13px;
+  color: #505358;
+  text-align: left;
+  background: rgba(241, 238, 231, 0.52);
+  border: 1px solid rgba(9, 10, 11, 0.1);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 160ms ease;
+}
+
+.choice-card:hover {
+  border-color: rgba(184, 154, 99, 0.62);
+  transform: translateY(-1px);
+}
+
+.choice-card.selected {
+  color: var(--pp-ink);
+  background: rgba(184, 154, 99, 0.16);
+  border-color: var(--pp-gold);
+  box-shadow: inset 3px 0 0 var(--pp-gold);
+}
+
+.choice-card svg {
+  color: var(--pp-gold-dark);
+}
+
+.choice-card strong {
+  color: inherit;
+  font-size: 0.88rem;
+}
+
+.choice-card span {
+  color: #696c70;
+  font-size: 0.76rem;
+  line-height: 1.32;
+}
+
+.choice-card.compact {
+  min-height: 78px;
+}
+
+.premium-input {
+  display: grid;
+  gap: 7px;
+  padding: 13px;
+  background: rgba(101, 117, 107, 0.08);
+  border: 1px solid rgba(101, 117, 107, 0.22);
+  border-radius: 6px;
+}
+
+.premium-input > span {
+  color: var(--pp-ink);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.premium-input small {
+  color: #696c70;
+  line-height: 1.4;
+}
+
+.payment-summary-panel {
+  position: sticky;
+  top: 18px;
+  background: var(--pp-charcoal);
+  color: var(--pp-paper);
+}
+
+.payment-summary-panel .panel-header h2,
+.payment-summary-panel .panel-header button {
+  color: var(--pp-paper);
+}
+
+.payment-summary-panel .panel-header button {
+  border-color: var(--pp-border-dark);
+}
+
+.summary-lines {
+  display: grid;
+  gap: 10px;
+  padding: 2px 0 15px;
+  border-bottom: 1px solid var(--pp-border-dark);
+}
+
+.summary-lines > div,
+.charge-total,
+.total-exposure {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.summary-lines span,
+.total-exposure span {
+  color: rgba(247, 245, 240, 0.64);
+  font-size: 0.82rem;
+}
+
+.summary-lines strong {
+  text-align: right;
+  font-size: 0.86rem;
+}
+
+.charge-total {
+  padding: 17px 0;
+}
+
+.charge-total span {
+  color: var(--pp-gold);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.charge-total strong,
+.total-exposure strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+.deposit-callout {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr);
+  gap: 11px;
+  padding: 14px;
+  color: var(--pp-ink);
+  background: var(--pp-paper);
+  border-left: 4px solid var(--pp-gold);
+  border-radius: 5px;
+}
+
+.deposit-callout svg {
+  color: var(--pp-gold-dark);
+}
+
+.deposit-callout span {
+  display: block;
+  color: #5f6266;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.deposit-callout strong {
+  display: block;
+  margin: 5px 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.45rem;
+  font-weight: 500;
+}
+
+.deposit-callout p,
+.payment-disclaimer {
+  margin: 0;
+  color: #696c70;
+  font-size: 0.76rem;
+  line-height: 1.42;
+}
+
+.total-exposure {
+  flex-wrap: wrap;
+  padding: 17px 0;
+  border-bottom: 1px solid var(--pp-border-dark);
+}
+
+.total-exposure small {
+  flex-basis: 100%;
+  color: rgba(247, 245, 240, 0.52);
+  text-align: right;
+}
+
+.collection-method {
+  display: grid;
+  gap: 10px;
+  padding: 17px 0 13px;
+}
+
+.payment-summary-panel .choice-card {
+  color: var(--pp-paper);
+  background: rgba(247, 245, 240, 0.06);
+  border-color: var(--pp-border-dark);
+}
+
+.payment-summary-panel .choice-card.selected {
+  background: rgba(184, 154, 99, 0.13);
+  border-color: var(--pp-gold);
+}
+
+.payment-summary-panel .choice-card span {
+  color: rgba(247, 245, 240, 0.58);
+}
+
+.payment-ready-action {
+  width: 100%;
+  justify-content: center;
+}
+
+.payment-disclaimer {
+  margin-top: 10px;
+  color: rgba(247, 245, 240, 0.48);
+}
+
 .progress-wrap {
   display: grid;
   gap: 6px;
@@ -3180,6 +3542,186 @@ body {
   padding: clamp(6rem, 9vw, 8rem) clamp(1.25rem, 5vw, 2.5rem);
 }
 
+.membership-preview {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+  max-width: 1440px;
+  min-height: 720px;
+  margin: 0 auto;
+  overflow: hidden;
+  color: var(--pp-ivory);
+  background:
+    linear-gradient(90deg, rgba(9, 10, 11, 0.98) 0%, rgba(9, 10, 11, 0.94) 48%, rgba(9, 10, 11, 0.34) 100%),
+    url("/concierge-assets/cars/lamborghini-urus-real-03.jpg") center right / cover;
+  border-block: 1px solid var(--pp-border-system);
+}
+
+.membership-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 850px;
+  padding: clamp(5rem, 8vw, 8rem) clamp(1.25rem, 7vw, 6.5rem);
+}
+
+.membership-edition {
+  margin: 0.8rem 0 0;
+  color: var(--pp-gold);
+  font-family: var(--pp-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.membership-copy h2 {
+  max-width: 760px;
+  margin: 1.1rem 0 1.5rem;
+  font-family: var(--pp-serif);
+  font-size: clamp(3.2rem, 6.5vw, 6.8rem);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.025em;
+}
+
+.membership-intro {
+  max-width: 650px;
+  margin: 0;
+  color: rgba(241, 238, 231, 0.72);
+  font-size: clamp(1rem, 1.4vw, 1.18rem);
+  line-height: 1.7;
+}
+
+.membership-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 740px;
+  margin: 2.25rem 0;
+  border-block: 1px solid var(--pp-border-system);
+}
+
+.membership-benefits article {
+  display: grid;
+  gap: 0.35rem;
+  align-content: center;
+  min-height: 126px;
+  padding: 1.25rem;
+  border-right: 1px solid var(--pp-border-system);
+}
+
+.membership-benefits article:last-child {
+  border-right: 0;
+}
+
+.membership-benefits strong {
+  color: var(--pp-ivory);
+  font-family: var(--pp-serif);
+  font-size: clamp(2.3rem, 4vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.membership-benefits span,
+.membership-rate > span {
+  color: var(--pp-gold);
+  font-family: var(--pp-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.membership-copy ul {
+  display: grid;
+  gap: 0.85rem;
+  max-width: 690px;
+  padding: 0;
+  margin: 0 0 2.25rem;
+  list-style: none;
+}
+
+.membership-copy li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  color: rgba(241, 238, 231, 0.82);
+  line-height: 1.55;
+}
+
+.membership-copy li svg {
+  flex: 0 0 auto;
+  margin-top: 0.2rem;
+  color: var(--pp-gold);
+}
+
+.membership-action {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  align-items: center;
+}
+
+.membership-action small {
+  max-width: 310px;
+  color: rgba(241, 238, 231, 0.48);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.membership-rate {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin: clamp(2rem, 4vw, 4rem);
+  padding: clamp(1.75rem, 4vw, 3rem);
+  overflow: hidden;
+  background: rgba(9, 10, 11, 0.82);
+  border: 1px solid rgba(184, 154, 99, 0.45);
+  backdrop-filter: blur(14px);
+}
+
+.membership-rate strong {
+  margin: 1rem 0 0.7rem;
+  font-family: var(--pp-serif);
+  font-size: clamp(4rem, 7vw, 7rem);
+  font-weight: 400;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+}
+
+.membership-rate sup {
+  position: relative;
+  top: -0.6em;
+  margin-right: 0.1em;
+  color: var(--pp-gold);
+  font-family: var(--pp-mono);
+  font-size: 0.24em;
+}
+
+.membership-rate p {
+  max-width: 290px;
+  margin: 0;
+  color: rgba(241, 238, 231, 0.68);
+  line-height: 1.65;
+}
+
+.membership-rate > div {
+  position: absolute;
+  right: -0.05em;
+  bottom: -0.22em;
+  z-index: -1;
+  color: rgba(184, 154, 99, 0.07);
+  font-family: var(--pp-serif);
+  font-size: 15rem;
+  line-height: 1;
+}
+
 .section-title,
 .fleet-grid,
 .process-grid,
@@ -3243,7 +3785,7 @@ body {
 .city-band {
   background:
     linear-gradient(to top, #090a0b, rgba(9, 10, 11, 0.7), rgba(9, 10, 11, 0.4)),
-    url("/concierge-assets/cars/maserati-mc20.png") center / cover;
+    url("/concierge-assets/cars/mclaren-gt-real-04.jpg") center / cover;
 }
 
 .reserve-band {
@@ -3348,8 +3890,13 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .client-intake-grid {
+  .client-intake-grid,
+  .square-finance-grid {
     grid-template-columns: 1fr;
+  }
+
+  .payment-summary-panel {
+    position: static;
   }
 
   .fleet-record-card {
@@ -3358,8 +3905,23 @@ body {
 }
 
 @media (max-width: 900px) {
+  .membership-preview {
+    grid-template-columns: 1fr;
+    background-position: 62% center;
+  }
+
+  .membership-copy {
+    padding-bottom: 2rem;
+  }
+
+  .membership-rate {
+    min-height: 300px;
+    margin-top: 0;
+  }
+
   .fleet-manager-hero,
-  .client-intake-hero {
+  .client-intake-hero,
+  .square-finance-hero {
     grid-template-columns: 1fr;
   }
 
@@ -3377,9 +3939,49 @@ body {
   .media-slot-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
+  .insurance-choices {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 720px) {
+  .membership-preview {
+    min-height: 0;
+    background:
+      linear-gradient(180deg, rgba(9, 10, 11, 0.97) 0%, rgba(9, 10, 11, 0.9) 58%, rgba(9, 10, 11, 0.58) 100%),
+      url("/concierge-assets/cars/lamborghini-urus-real-03.jpg") 40% center / cover;
+  }
+
+  .membership-copy {
+    padding: 4.5rem 1.25rem 1.5rem;
+  }
+
+  .membership-copy h2 {
+    font-size: clamp(3.1rem, 14vw, 4.4rem);
+  }
+
+  .membership-benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .membership-benefits article {
+    grid-template-columns: 90px minmax(0, 1fr);
+    min-height: 94px;
+    align-items: center;
+    border-right: 0;
+    border-bottom: 1px solid var(--pp-border-system);
+  }
+
+  .membership-benefits article:last-child {
+    border-bottom: 0;
+  }
+
+  .membership-rate {
+    min-height: 270px;
+    margin: 1.25rem;
+  }
+
   .hero-content {
     width: calc(100% - 2.5rem);
     margin: 0 auto 5rem;
@@ -3393,6 +3995,10 @@ body {
   .fleet-manager-actions,
   .client-intake-actions,
   .fleet-editor-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .choice-grid.two {
     grid-template-columns: 1fr;
   }
 
